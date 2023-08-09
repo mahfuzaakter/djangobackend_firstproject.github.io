@@ -15,8 +15,23 @@ class album(models.Model):
     release_date =models.DateField()
     num_stars = models.IntegerField()
     
+    #tuple create
+    rating = (
+        (1, "worst"),
+        (2,"bad"),
+        (3,"not bad"),
+        (4,"good"),
+    )
+    
+    #choice
+    num_stars = models.IntegerField(choices= rating)
+    
+    def __str__(self):
+         return self.name +", rating: " + str(self.num_stars)
+    
 def __str__(self):
     return self.first_name + "" + self.last_name
+
 
 
 # CREATE TABLE Person (
