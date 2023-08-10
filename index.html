@@ -1,4 +1,4 @@
-{%  load static %}
+{% comment %} {%  load static %}
 <!DOCTYPE html>
   
 <html lang="en">
@@ -16,9 +16,40 @@
     <img src ="{% static "images/image.jpg" %}" >
 </body>
 
+</html> {% endcomment %}
+
+{%  load static %}
+<!DOCTYPE html>
+  
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet"  href="{% static "css/style.css" %}">
+    <title>musician</title>
+</head>
+
+<body>
+    <h1>{{text_1}}</h1>
+    <br>
+    <img src ="{% static "images/image.jpg" %}" >
+    <table border="1">
+        <tr>
+            <th> first name </th>
+            <th>last name</th>
+            <th>instrument</th>
+        </tr>
+        {%for row in musician%}
+        <tr>
+            <td>{{row.first_name}}</td>
+            <td>{{row.last_name}}</td>
+            <td>{{row.instrument}}</td>
+
+        </tr>
+        {% endfor %}
+    </table>
+
+
+</body>
 </html>
-
-
-
 
 

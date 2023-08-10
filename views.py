@@ -1,10 +1,13 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from firstapp.models import musician, album
 
 # Create your views here.
 
+
 def index(request):
-    diction={'text_1':'i am a text from views.py'}
+    musician_list = musician.objects.order_by('first_name')
+    diction={'text_1':'this a list of musician','musician':musician_list}
     # return HttpResponse("hello World <a href='contact/'> contact </a> <a href='about/'> about </a>")
     return render(request, 'firstapp/index.html', context=diction)
 def contact(request):
