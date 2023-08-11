@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from firstapp.models import musician, album
+from firstapp.models import musician 
+from firstapp import forms
 
 # Create your views here.
 
@@ -15,3 +16,8 @@ def contact(request):
 
 def about(request):
     return HttpResponse("<h1>About us</h1> <a href='/'> index </a> <a href='/contact/'> contact </a>")
+
+def form(request):
+    new_form = forms.user_form() 
+    dictionary={'test_form': new_form, 'text':'this form created django'}
+    return render(request, 'firstapp/form.html', context=dictionary)
