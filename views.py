@@ -19,5 +19,18 @@ def about(request):
 
 def form(request):
     new_form = forms.user_form() 
-    dictionary={'test_form': new_form, 'text':'this form created django'}
+    dictionary={'test_form': new_form, 'text':'this form created django    '}
+    
+    if request.method == 'post' :
+        new_form=forms.user_form(request.post)
+        
+        if new_form.is_valid():
+            user_name =new_form.cleaned_data['user_name']
+            user_dob= new_form.cleaned_data['user_dob']
+            user_email= new_form.cleaned_data['user_email']
+            
+            dictionary.update({' user_name':user_name})
+            dictionary.update({'user_dob':user_dob})
+            dictionary.update({'user_email':user_email})
+            dictionary.update({'form_submit':"yes"})
     return render(request, 'firstapp/form.html', context=dictionary)

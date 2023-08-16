@@ -22,6 +22,15 @@
     <h3>{{text}}</h3>
     <form action="" method="post">
         {{test_form}}
+        {% csrf_token %}
+        <input type="submit" name= "submit" value="submit" >
     </form>
+    <hr>
+
+    {%if form_submit %}
+     <p>name:{{user_name}}</p>
+     <p>date of birth :{{user_dob}}</p>
+     <p>email: {{user_email}}</p>
+    {% endif %}
 </body>
 </html>
