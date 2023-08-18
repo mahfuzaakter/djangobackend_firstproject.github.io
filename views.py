@@ -23,7 +23,7 @@ def form(request):
     
     if request.method == 'post' :
         new_form=forms.user_form(request.post)
-        
+        dictionary.update({'test_form':new_form})
         if new_form.is_valid():
             user_name =new_form.cleaned_data['user_name']
             user_dob= new_form.cleaned_data['user_dob']
@@ -33,4 +33,9 @@ def form(request):
             dictionary.update({'user_dob':user_dob})
             dictionary.update({'user_email':user_email})
             dictionary.update({'form_submit':"yes"})
+            
+            
+            dictionary.update({'boolean_field':new_form.cleaned_data['boolean_field']})
+            dictionary.update({'char_field':new_form.cleaned_data['char_data']})
+            dictionary.update({'num ':new_form.cleaned_data['num']})
     return render(request, 'firstapp/form.html', context=dictionary)
