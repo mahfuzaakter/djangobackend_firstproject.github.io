@@ -1,6 +1,11 @@
 from django import forms
 from django.core.validators import MaxLengthValidator
 from django.core import validators
+#for model form
+# from firstapp.models import album,musician
+from firstapp import models
+from .models import musician
+
 
 
 # validation
@@ -23,4 +28,11 @@ class user_form(forms.Form):
     name = forms.CharField(validators=[MaxLengthValidator(10)])
     num= forms.IntegerField(validators=[even_or_not])
 
-    
+# for model form
+class musicianForm(forms.ModelForm):    
+    class Meta:
+        # model=models.musician
+        model=musician
+        fields="__all__"
+        # exclude =['firstname'],,,,kichu bad deoyar jonno
+        # fields = ('firstname','lastname')

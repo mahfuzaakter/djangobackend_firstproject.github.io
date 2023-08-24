@@ -18,13 +18,21 @@
 
 </html> {% endcomment %}
 
+{% comment %} 
+{% extends 'firstapp/base.html' %}
+{% block body_block %}
+<h1> Iam index page</h1>
+{% endblock %}
+  {% endcomment %}
+
 {%  load static %}
+
 <!DOCTYPE html>
-  
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet"  href="{% static "css/style.css" %}">
+    <link rel="stylesheet"  href="{% static "css/style.css" %}" >
     <title>musician</title>
 </head>
 
@@ -32,6 +40,7 @@
     <h1>{{text_1}}</h1>
     <br>
     <img src ="{% static "images/image.jpg" %}" >
+    <a href="form/">Add new</a>
     <table border="1">
         <tr>
             <th> first name </th>
